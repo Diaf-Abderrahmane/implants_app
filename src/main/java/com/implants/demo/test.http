@@ -1,0 +1,341 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+  "userId": "45667741",
+  "username": "tbib",
+  "password": "tbib",
+  "role": "tbib"
+}
+
+###
+POST https://hapi.fhir.org/baseR4/Patient
+Accept: application/fhir+json
+Content-Type: application/json
+
+{
+  "resourceType": "Patient",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "abderrahmane"
+      ],
+      "family": "Diaf"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-12-12",
+  "telecom": [
+    {
+      "value": "0753737241",
+      "use": "mobile",
+      "system": "phone"
+    },
+    {
+      "value": "abdoudiaf30@gmail.com",
+      "use": null,
+      "system": "email"
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "32/1110 C1 Heaven House"
+      ],
+      "city": "XYZ",
+      "state": "ABC",
+      "postalCode": "960000"
+    }
+  ],
+  "generalPractitioner": [
+    {
+      "reference": "Practitioner/45667208",
+      "type": "Practitioner",
+      "identifier": {
+        "system": "http://example.com",
+        "value": "45667188"
+      },
+      "display": "Dr. adel diaf"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody/></table></div>"
+  }
+}
+
+###
+POST http://localhost:8080/api/patients
+Content-Type: application/json
+
+{
+  "resourceType": "Patient",
+  "id": "45669860",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Abderrahmane"
+      ],
+      "family": "Tahri"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-12-12",
+  "telecom": [
+    {
+      "value": "0753737241",
+      "use": "mobile",
+      "system": "phone"
+    },
+    {
+      "value": "abdoudiaf30@gmail.com",
+      "use": null,
+      "system": "email"
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "32/1110 C1 Heaven House"
+      ],
+      "city": "XYZ",
+      "state": "ABC",
+      "postalCode": "960000"
+    }
+  ],
+  "generalPractitioner": [
+    {
+      "reference": "Practitioner/45667188",
+      "type": "Practitioner",
+      "identifier": {
+        "system": "http://example.com",
+        "value": "45667188"
+      },
+      "display": "Dr. adel diaf"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody/></table></div>"
+  }
+}
+
+###
+# curl http://localhost:8080/patients
+GET http://localhost:8080/api/patients
+
+###
+GET http://localhost:8080/api/patients/45667741
+
+// ----------------------------------------------------------------------------------
+
+###
+POST https://hapi.fhir.org/baseR4/AdverseEvent
+Accept: application/fhir+json
+Content-Type: application/json
+
+{
+  "resourceType": "AdverseEvent",
+  "status": "completed",
+  "actuality": "actual",
+  "category": [
+    {
+      "code": "medication-mishap"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/45667980",
+    "type": "Patient",
+    "identifier": {
+      "system": "http://example.com/patient-identifier",
+      "value": "45667980"
+    },
+    "display": "Adel Diaf"
+  },
+  "occurrenceDateTime": "2025-01-01T00:00:00Z",
+  "detected": "2025-01-02T00:00:00Z"
+}
+
+###
+POST http://localhost:8080/api/adverseevent
+Content-Type: application/json
+
+{
+  "resourceType": "AdverseEvent",
+  "id": "45668248",
+  "status": "completed",
+  "actuality": "actual",
+  "category": [
+    {
+      "code": "medication-mishap"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/45667980",
+    "type": "Patient",
+    "identifier": {
+      "system": "http://example.com/patient-identifier",
+      "value": "45667980"
+    },
+    "display": "Adel Diaf"
+  },
+  "occurrenceDateTime": "2025-01-01T00:00:00Z",
+  "detected": "2025-01-02T00:00:00Z"
+}
+
+###
+adverseevent
+GET http://localhost:8080/api/adverseevent/45648209
+
+// ----------------------------------------------------------------------------------
+
+### post practitioner
+POST https://hapi.fhir.org/baseR4/Practitioner
+Content-Type: application/json
+
+{
+  "resourceType": "Practitioner",
+  "identifier": [
+    {
+      "system": "http://hospital.org/practitioner-ids",
+      "value": "12345"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Dr. John Doe",
+      "family": "Diaf",
+      "given": [
+        "Khaled",
+        "A."
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+1234567890",
+      "use": "work"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-05-15",
+  "address": [
+    {
+      "use": "home",
+      "type": "both",
+      "text": "123 Main St, Springfield, USA",
+      "city": "Springfield",
+      "state": "IL",
+      "postalCode": "62704",
+      "country": "USA"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": [
+        {
+          "system": "http://certificates.org/licenses",
+          "value": "MD-5678"
+        }
+      ],
+      "code": {
+        "code": "MD",
+        "text": "Medical Doctor"
+      },
+      "period": {
+        "start": "2005-01-01",
+        "end": "2030-12-31"
+      }
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "code": "en",
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ]
+}
+
+###
+
+POST http://localhost:8080/api/practitioners
+Content-Type: application/json
+
+{
+  "resourceType": "Practitioner",
+  "id": "45667225",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "text": "Dr. John Doe",
+      "family": "Diaf",
+      "given": [
+        "Adel",
+        "A."
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+1234567890",
+      "use": "work"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-05-15",
+  "address": [
+    {
+      "use": "home",
+      "type": "both",
+      "text": "123 Main St, Springfield, USA",
+      "city": "Springfield",
+      "state": "IL",
+      "postalCode": "62704",
+      "country": "USA"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": [
+        {
+          "system": "http://certificates.org/licenses",
+          "value": "MD-5678"
+        }
+      ],
+      "code": {
+        "code": "MD",
+        "text": "Medical Doctor"
+      },
+      "period": {
+        "start": "2005-01-01",
+        "end": "2030-12-31"
+      }
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "code": "en",
+        "text": "English"
+      },
+      "preferred": true
+    }
+  ]
+}
+
+###
