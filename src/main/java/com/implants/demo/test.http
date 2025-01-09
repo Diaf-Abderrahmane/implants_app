@@ -169,7 +169,7 @@ Content-Type: application/json
 
 {
   "resourceType": "AdverseEvent",
-  "id": "45668248",
+  "id": "45668249",
   "status": "completed",
   "actuality": "actual",
   "category": [
@@ -184,15 +184,18 @@ Content-Type: application/json
       "system": "http://example.com/patient-identifier",
       "value": "45667980"
     },
-    "display": "Adel Diaf"
+    "display": "yaakoub yaakoub"
   },
   "occurrenceDateTime": "2025-01-01T00:00:00Z",
   "detected": "2025-01-02T00:00:00Z"
 }
 
 ###
-adverseevent
-GET http://localhost:8080/api/adverseevent/45648209
+GET http://localhost:8080/api/adverseevents/45668224
+
+###
+GET http://localhost:8080/api/adverseevents
+
 
 // ----------------------------------------------------------------------------------
 
