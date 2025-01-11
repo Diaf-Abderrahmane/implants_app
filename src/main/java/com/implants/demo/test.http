@@ -342,3 +342,21 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:8080/api/appointments
+
+###
+POST http://localhost:8080/api/devices
+Content-Type: application/json
+
+{
+  "status": "active",
+  "manufacturer": "Cochlear Inc.",
+  "manufactureDate": "2023-05-20T00:00:00Z",
+  "serialNumber": "SN123456789",
+  "modelNumber": "Model-CX",
+  "subject": {
+    "reference": "Patient/67890",
+    "type": "Patient",
+    "display": "JohnDoe"
+}
+}
